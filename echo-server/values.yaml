@@ -1,0 +1,33 @@
+replicaCount: 1
+
+image:
+  repository: echo-server
+  tag: latest
+  pullPolicy: IfNotPresent
+
+service:
+  type: LoadBalancer
+  port: 80
+
+env:
+  name: ENVIRONMENT
+  value: "prod"  # Change this to "stage" or "int" as needed
+
+indexHtmlContent: |
+  <!DOCTYPE html>
+  <html>
+  <head>
+      <title>Index Page</title>
+  </head>
+  <body>
+      <h1>Welcome to the Echo Server</h1>
+  </body>
+  </html>
+
+resources: {}
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}
