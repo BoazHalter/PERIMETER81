@@ -15,13 +15,13 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     - name: Build the Docker image
-      run: |
-        echo "FOO=$(git status)" >> $GITHUB_ENV
-        echo "Tag=date +%s" >> $GITHUB_ENV
-        echo "${{ env.FOO }}"
-        echo "${{ env.Tag }}"
-        docker build . --file Dockerfile --tag echo-server:"${{ env.Tag }}"
-        docker run -d -p 8080:8080 -e ENVIRONMENT=staging echo-server:"${{ env.Tag }}"
+      id: Tag
+      with:
+        run: date +'%Y-%m-%d'
+    - run: |
+        echo "${{ steps.Tag.outputs.stdout }}"
+        docker build . --file Dockerfile --tag echo-server:"${{ steps.Tag.outputs.stdout }}"
+        docker run -d -p 8080:8080 -e ENVIRONMENT=staging echo-server:"${{ steps.Tag.outputs.stdout }}"
         sleep 5
         curl localhost:8080 -vih
         #docker push <your-docker-registry>/echo-server:$(date +%s)
