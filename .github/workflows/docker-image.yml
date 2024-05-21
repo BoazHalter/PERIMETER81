@@ -13,8 +13,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v4
     - name: Build the Docker image
+      uses: actions/checkout@v4
     - run: |
         echo "${{ steps.Tag.outputs.stdout }}"
         docker build . --file Dockerfile --tag echo-server:${{ github.run_id }}
