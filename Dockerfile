@@ -18,4 +18,4 @@ EXPOSE 8080
 ENV ENVIRONMENT=development
 RUN pwd
 # Run echo_server.py when the container launches
-CMD ["python", "echo_server.py"]
+CMD ["python", "./echo_server.py"]
