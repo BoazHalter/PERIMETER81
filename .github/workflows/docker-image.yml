@@ -15,14 +15,10 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     - name: Build the Docker image
-      uses: mathiasvr/command-output@v2.0.0
-      id: Tag
-      with:
-        run: date +'%Y-%m-%d'
     - run: |
         echo "${{ steps.Tag.outputs.stdout }}"
-        docker build . --file Dockerfile --tag echo-server:"${{ steps.Tag.outputs.stdout }}"
-        docker run -d -p 8080:8080 -e ENVIRONMENT=staging echo-server:"${{ steps.Tag.outputs.stdout }}"
+        docker build . --file Dockerfile --tag echo-server:${{ github.run_id }}
+        docker run -d -p 8080:8080 -e ENVIRONMENT=staging echo-server:${{ github.run_id }}
         sleep 5
         curl localhost:8080 -vih
         #docker push <your-docker-registry>/echo-server:$(date +%s)
