@@ -1,13 +1,14 @@
 import http.server
 import socketserver
 import socket
-import requests
 import os
 import json
 from urllib.parse import parse_qs
+import geocoder
 
-# Define the port for the HTTP server
-PORT = 8080
+# Define the port and echo message using environment variables
+PORT = int(os.getenv('PORT', 8080))
+ECHO_MESSAGE = os.getenv('ECHO_MESSAGE', "Hello, World!")  # Default to "Hello, World!"
 
 # Path to the index.html file
 INDEX_HTML_PATH = 'index.html'
@@ -15,7 +16,7 @@ INDEX_HTML_PATH = 'index.html'
 class FormRequestHandler(http.server.SimpleHTTPRequestHandler):
     def do_GET(self):
         # Serve the index.html file
-        if self.path == '/':
+        if self.path == '/index.html':
             if os.path.exists(INDEX_HTML_PATH):
                 try:
                     with open(INDEX_HTML_PATH, 'rb') as file:
@@ -71,13 +72,10 @@ class FormRequestHandler(http.server.SimpleHTTPRequestHandler):
         return local_ip
 
     def get_geo_location(self, ip_address):
-        # Fetch geolocation data using an external service
+        # Fetch geolocation data using the geocoder library
         try:
-            response = requests.get(f'http://ip-api.com/json/{ip_address}')
-            if response.status_code == 200:
-                return response.json()
-            else:
-                return {'error': 'Unable to fetch geo location'}
+            g = geocoder.ip(ip_address)
+            return g.json
         except Exception as e:
             return {'error': str(e)}
 
