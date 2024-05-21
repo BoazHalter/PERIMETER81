@@ -16,8 +16,9 @@ jobs:
     - uses: actions/checkout@v4
     - name: Build the Docker image
       run: |
-        docker build . --file Dockerfile --tag echo-server:$(date +%s)
-        docker run -d -p 8080:8080 -e ENVIRONMENT=staging echo-server
+        tag = $(date +%s)
+        docker build . --file Dockerfile --tag echo-server:$(tag)
+        docker run -d -p 8080:8080 -e ENVIRONMENT=staging echo-server:$(tag)
         curl localhost:8080 -vih
         #docker push <your-docker-registry>/echo-server:$(date +%s)
       env:
