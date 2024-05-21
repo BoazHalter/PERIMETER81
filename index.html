@@ -3,10 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Index Page</title>
+    <title>Input Form</title>
 </head>
 <body>
-    <h1>Welcome to the Index Page!</h1>
-    <p>This is a sample index.html file served by the Python HTTP server.</p>
+    <h1>Enter a String</h1>
+    <form action="/submit" method="post">
+        <label for="user_input">Input:</label>
+        <input type="text" id="user_input" name="user_input" required>
+        <button type="submit">Submit</button>
+    </form>
 </body>
 </html>
