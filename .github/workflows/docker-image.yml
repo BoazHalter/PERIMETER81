@@ -17,7 +17,7 @@ jobs:
     - name: Build the Docker image
       run: |
         echo "FOO=$(git status)" >> $GITHUB_ENV
-        echo "Tag=$(date +%s)" >> $GITHUB_ENV
+        echo "Tag=date +%s" >> $GITHUB_ENV
         echo "${{ env.FOO }}"
         echo "${{ env.Tag }}"
         docker build . --file Dockerfile --tag echo-server:"${{ env.Tag }}"
