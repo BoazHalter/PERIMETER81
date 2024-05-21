@@ -15,6 +15,7 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     - name: Build the Docker image
+      uses: mathiasvr/command-output@v2.0.0
       id: Tag
       with:
         run: date +'%Y-%m-%d'
