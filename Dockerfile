@@ -9,7 +9,7 @@ COPY echo-server.py index.html .
 
 # Install any needed packages specified in requirements.txt
 # Since we only need requests, we can install it directly
-RUN pip install requests
+RUN pip install requests geocoder
 
 # Make port 8080 available to the world outside this container
 EXPOSE 8080
