@@ -20,8 +20,8 @@ jobs:
         docker build . --file Dockerfile --tag echo-server:${{ github.run_id }}
         docker run -d -p 8080:8080 -e ENVIRONMENT=staging echo-server:${{ github.run_id }}
         docker ps -a
-        sleep 5
-        curl localhost:8080 
+        sleep 10
+        curl http://localhost:8080 
         #docker push <your-docker-registry>/echo-server:$(date +%s)
       env:
         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
