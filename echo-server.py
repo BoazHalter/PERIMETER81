@@ -3,6 +3,7 @@ import socketserver
 import socket
 import requests
 import os
+import json
 
 # Define the port for the HTTP server
 PORT = 8080
@@ -20,9 +21,13 @@ class EchoRequestHandler(http.server.SimpleHTTPRequestHandler):
     def do_GET(self):
         if self.path == '/index.html':
             if os.path.exists(INDEX_HTML_PATH):
+                ip_address = self.get_local_ip()
+                geo_location = self.get_geo_location(ip_address)
+                geo_location_str = json.dumps(geo_location, indent=4)
                 with open(INDEX_HTML_PATH, 'r') as file:
                     content = file.read()
                     updated_content = content.replace('{{ECHO_MESSAGE}}', ECHO_MESSAGE)
+                    updated_content = updated_content.replace('{{GEO_LOCATION}}', geo_location_str)
                     self.send_response(200)
                     self.send_header('Content-type', 'text/html')
                     self.end_headers()
