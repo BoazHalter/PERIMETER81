@@ -20,4 +20,4 @@ ENV ENVIRONMENT=development
 ENV ECHO_MESSAGE="Hello, World!"
 
 # Run echo_server.py when the container launches
-CMD ["python", "echo_server.py"]
+CMD ["python", "./echo_server.py"]
