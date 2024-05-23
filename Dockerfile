@@ -6,7 +6,7 @@ WORKDIR /app
 
 # Copy the current directory contents into the container at /app
 COPY echo-server.py index.html .
-RUN chmod 700 ./echo-server.py
+RUN chmod -R 765 /app
 
 # Install any needed packages specified in requirements.txt
 # Since we only need requests, we can install it directly
