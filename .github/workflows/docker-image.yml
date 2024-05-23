@@ -16,8 +16,9 @@ jobs:
     - name: Build the Docker image
       uses: actions/checkout@v4
     - run: |
+
         docker build . --file Dockerfile --tag echo-server:${{ github.run_id }}
-        docker run -d -p 8080:8080 -e ENVIRONMENT=staging echo-server:${{ github.run_id }}
+        docker run -d -p 8080:8080 -e ECHO_MESSAGE="Hello from Staging" -e ENVIRONMENT=staging echo-server:${{ github.run_id }}
         docker ps -a
         sleep 10
         curl http://localhost:8080/index.html 
