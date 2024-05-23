@@ -5,7 +5,7 @@ FROM python:3.9-slim
 WORKDIR /app
 
 # Copy the current directory contents into the container at /app
-COPY . /app
+COPY echo-server.py index.html .
 
 # Install any needed packages specified in requirements.txt
 # Since we only need requests, we can install it directly
@@ -19,4 +19,4 @@ ENV ENVIRONMENT=development
 ENV ECHO_MESSAGE="Hello, World!"
 
 # Run echo_server.py when the container launches
-CMD ["python", "echo_server.py"]
+CMD ["python", "./echo_server.py"]
