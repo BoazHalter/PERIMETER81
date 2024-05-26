@@ -69,7 +69,7 @@ module "eks" {
     ami_type = "AL2_x86_64"
   }
 
-  eks_managed_node_groups = {
+  eks_managed_node_group = {
       name = "boaz-eks-node-group-1"
 
       instance_types = ["t3.medium"]
