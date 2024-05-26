@@ -1,3 +1,7 @@
+variable "ssh_key_name" {
+  description = "ssh_key_name"
+  type        = string
+}
 variable "cluster_name" {
   description = "The name of the EKS cluster"
   type        = string
