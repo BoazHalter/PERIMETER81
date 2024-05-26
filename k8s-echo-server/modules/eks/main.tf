@@ -78,6 +78,12 @@ module "eks" {
       min_size     = 1
       max_size     = 1
       desired_size = 1
+      tags = {
+        Name       = "boaz"
+        Owner      = "Nati"
+        Department = "DevOps"
+        Temp       = "True"
+      }
     }
     two = {}
   }
