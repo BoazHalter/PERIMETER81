@@ -1,17 +1,4 @@
-variable "vpc_id" {
-  description = "The VPC ID where the cluster will be created"
-  type        = string
-}
 
-variable "subnet_ids" {
-  description = "List of subnet IDs"
-  type        = list(string)
-}
-
-variable "vpc_cidr_block" {
-  description = "The CIDR block of the VPC"
-  type        = string
-}
 
 resource "aws_security_group" "eks_node_group" {
   name   = "${var.cluster_name}-node-sg"
