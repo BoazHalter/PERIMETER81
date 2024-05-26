@@ -27,4 +27,8 @@ variable "instance_type" {
   description = "EC2 instance type for the nodes"
   type        = string
 }
+variable "vpc_cidr_block" {
+  description = "vpc_cidr_block"
+  type        = string
+}
 
