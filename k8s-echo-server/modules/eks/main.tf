@@ -70,7 +70,6 @@ module "eks" {
   }
 
   eks_managed_node_groups = {
-    one = {
       name = "boaz-eks-node-group-1"
 
       instance_types = ["t3.medium"]
@@ -78,7 +77,7 @@ module "eks" {
       min_size     = 1
       max_size     = 1
       desired_size = 1
-    }
+    
   }
 }
 
