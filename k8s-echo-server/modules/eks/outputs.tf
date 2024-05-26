@@ -1,16 +1,22 @@
-output "cluster_id" {
-  value = aws_eks_cluster.this.id
-}
+# Copyright (c) HashiCorp, Inc.
+# SPDX-License-Identifier: MPL-2.0
 
 output "cluster_endpoint" {
-  value = aws_eks_cluster.this.endpoint
+  description = "Endpoint for EKS control plane"
+  value       = module.eks.cluster_endpoint
 }
 
-output "cluster_certificate_authority" {
-  value = aws_eks_cluster.this.certificate_authority[0].data
+output "cluster_security_group_id" {
+  description = "Security group ids attached to the cluster control plane"
+  value       = module.eks.cluster_security_group_id
 }
 
-output "node_group_id" {
-  value = aws_eks_node_group.this.id
+output "region" {
+  description = "AWS region"
+  value       = var.region
 }
 
+output "cluster_name" {
+  description = "Kubernetes Cluster Name"
+  value       = module.eks.cluster_name
+}
