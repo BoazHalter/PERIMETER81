@@ -3,11 +3,6 @@ variable "cluster_name" {
   type        = string
 }
 
-variable "node_group_name" {
-  description = "The name of the node group"
-  type        = string
-}
-
 variable "subnet_ids" {
   description = "List of subnet IDs"
   type        = list(string)
