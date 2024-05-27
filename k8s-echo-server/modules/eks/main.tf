@@ -24,6 +24,12 @@ resource "random_string" "suffix" {
 }
 
 module "vpc" {
+tags = {
+      Name = "boaz"
+      Owner = "Nati"
+      Department = "DevOps"
+      Temp = "True"
+    }
   source  = "terraform-aws-modules/vpc/aws"
   version = "5.8.1"
 
@@ -126,6 +132,12 @@ data "aws_iam_policy" "ebs_csi_policy" {
 }
 
 module "irsa-ebs-csi" {
+tags = {
+      Name = "boaz"
+      Owner = "Nati"
+      Department = "DevOps"
+      Temp = "True"
+    }
   source  = "terraform-aws-modules/iam/aws//modules/iam-assumable-role-with-oidc"
   version = "5.39.0"
 
