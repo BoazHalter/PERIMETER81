@@ -15,7 +15,7 @@ ECHO_MESSAGE = os.getenv('ECHO_MESSAGE', "Hello, World!")
 ENVIRONMENT = os.getenv('ENVIRONMENT', 'development')
 
 # Path to the index.html file
-INDEX_HTML_PATH = 'index.html'
+INDEX_HTML_PATH = './index.html'
 
 class EchoRequestHandler(http.server.SimpleHTTPRequestHandler):
     def do_GET(self):
