@@ -101,7 +101,7 @@ module "eks" {
     one = {
       name = "boaz-eks-node-group-1"
 
-      instance_types = ["t3.micro"]
+      instance_types = ["t3.small"]
 
       min_size     = 1
       max_size     = 1
@@ -132,7 +132,7 @@ module "eks" {
     two = {
       name = "boaz-eks-node-group-2"
 
-      instance_types = ["t3.micro"]
+      instance_types = ["t3.small"]
 
       min_size     = 0
       max_size     = 1
