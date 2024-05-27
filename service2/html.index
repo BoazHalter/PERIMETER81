@@ -1,31 +1,39 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Geolocation Example</title>
+  <title>Geolocation and IP Example</title>
 </head>
 <body>
 
-<div id="demo">Loading location...</div>
+<div id="geoLocation">Loading location...</div>
+<div id="ipAddress">Loading IP address...</div>
 
 <script>
-const x = document.getElementById("demo");
+const geoLocationElement = document.getElementById("geoLocation");
 
 function getLocation() {
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(showPosition);
   } else {
-    x.innerHTML = "Geolocation is not supported by this browser.";
+    geoLocationElement.innerHTML = "Geolocation is not supported by this browser.";
   }
 }
 
 function showPosition(position) {
-  x.innerHTML = "Latitude: " + position.coords.latitude +
+  geoLocationElement.innerHTML = "Latitude: " + position.coords.latitude +
   "<br>Longitude: " + position.coords.longitude;
 }
 
-// Call getLocation when the page loads
 window.onload = getLocation;
 </script>
+
+<script type="application/javascript">
+  function getIP(json) {
+    document.getElementById("ipAddress").innerHTML = "My public IP address is: " + json.ip;
+  }
+</script>
+
+<script type="application/javascript" src="https://ipinfo.io/?format=jsonp&callback=getIP"></script>
 
 </body>
 </html>
