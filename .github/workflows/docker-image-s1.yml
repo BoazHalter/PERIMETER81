@@ -22,7 +22,7 @@ jobs:
     - name: Build the Docker image
       uses: actions/checkout@v4
     - run: |
-        cd /service1
+        cd service1
         docker build . --file Dockerfile --tag 329082085800.dkr.ecr.eu-central-1.amazonaws.com/echo-server:${{ github.run_id }}
         docker run -d -p 8080:8080 -e ECHO_MESSAGE="Hello from Staging" -e ENVIRONMENT=staging 329082085800.dkr.ecr.eu-central-1.amazonaws.com/echo-server:${{ github.run_id }}
         docker ps -a
