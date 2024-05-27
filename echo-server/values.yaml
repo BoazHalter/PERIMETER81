@@ -14,15 +14,18 @@ env:
   value: "prod"  # Change this to "stage" or "int" as needed
 
 indexHtmlContent: |
-  <!DOCTYPE html>
-  <html>
-  <head>
-      <title>Index Page</title>
-  </head>
-  <body>
-      <h1>Welcome to the Echo Server</h1>
-  </body>
-  </html>
+ <!DOCTYPE html>
+<html>
+<head>
+    <title>Index Page</title>
+</head>
+<body>
+    <h1>Welcome to the Echo Server</h1>
+    <p>Echo Message: {{ECHO_MESSAGE}}</p>
+    <p>Geo-location Data:</p>
+    <pre>{{GEO_LOCATION}}</pre>
+</body>
+</html>
 
 resources: {}
 
