@@ -63,6 +63,12 @@ module "eks" {
       service_account_role_arn = module.irsa-ebs-csi.iam_role_arn
     }
   }
+  tags = {
+        Name = "boaz"
+        Owner = "Nati"
+        Department = "DevOps"
+        Temp = "True"
+      }
 
   vpc_id     = module.vpc.vpc_id
   subnet_ids = module.vpc.private_subnets
