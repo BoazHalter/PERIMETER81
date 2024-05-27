@@ -32,12 +32,19 @@ module "vpc" {
   cidr = "10.0.0.0/16"
   azs  = slice(data.aws_availability_zones.available.names, 0, 3)
 
+  private_subnets = ["10.0.1.0/24", "10.0.2.0/24", "10.0.3.0/24"]
   public_subnets  = ["10.0.4.0/24", "10.0.5.0/24", "10.0.6.0/24"]
 
+  enable_nat_gateway   = true
+  single_nat_gateway   = true
   enable_dns_hostnames = true
 
   public_subnet_tags = {
     "kubernetes.io/role/elb" = 1
+  }
+
+  private_subnet_tags = {
+    "kubernetes.io/role/internal-elb" = 1
   }
 }
 
@@ -47,15 +54,10 @@ module "eks" {
 
   cluster_name    = local.cluster_name
   cluster_version = "1.29"
-  
+
   cluster_endpoint_public_access           = true
   enable_cluster_creator_admin_permissions = true
-  tags = {
-    Name       = "boaz"
-    Owner      = "Nati"
-    Department = "DevOps"
-    Temp       = "True"
-  }
+
   cluster_addons = {
     aws-ebs-csi-driver = {
       service_account_role_arn = module.irsa-ebs-csi.iam_role_arn
@@ -63,28 +65,33 @@ module "eks" {
   }
 
   vpc_id     = module.vpc.vpc_id
-  subnet_ids = module.vpc.public_subnets
+  subnet_ids = module.vpc.private_subnets
 
   eks_managed_node_group_defaults = {
     ami_type = "AL2_x86_64"
+
   }
 
   eks_managed_node_groups = {
-    tags = {
-        Name       = "boaz"
-        Owner      = "Nati"
-        Department = "DevOps"
-        Temp       = "True"
-      }
     one = {
       name = "boaz-eks-node-group-1"
+
       instance_types = ["t3.medium"]
 
       min_size     = 1
       max_size     = 1
       desired_size = 1
     }
-    two = {}
+
+    two = {
+      name = "vi-eks-node-group-2"
+
+      instance_types = ["t3.medium"]
+
+      min_size     = 0
+      max_size     = 0
+      desired_size = 0
+    }
   }
 }
 
