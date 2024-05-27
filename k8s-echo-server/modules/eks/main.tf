@@ -57,12 +57,7 @@ module "eks" {
 
   cluster_endpoint_public_access           = true
   enable_cluster_creator_admin_permissions = true
-  tags = {
-    Name = "boaz"
-    Owner = "Nati"
-    Department = "DevOps"
-    Temp = "True"
-  }
+  
   cluster_addons = {
     aws-ebs-csi-driver = {
       service_account_role_arn = module.irsa-ebs-csi.iam_role_arn
@@ -74,6 +69,12 @@ module "eks" {
 
   eks_managed_node_group_defaults = {
     ami_type = "AL2_x86_64"
+    tags = {
+      Name = "boaz"
+      Owner = "Nati"
+      Department = "DevOps"
+      Temp = "True"
+    }
 
   }
 
@@ -92,6 +93,12 @@ module "eks" {
       min_size     = 1
       max_size     = 1
       desired_size = 1
+      tags = {
+        Name = "boaz"
+        Owner = "Nati"
+        Department = "DevOps"
+        Temp = "True"
+      }
     }
 
     two = {
@@ -102,6 +109,12 @@ module "eks" {
       min_size     = 0
       max_size     = 1
       desired_size = 0
+      tags = {
+        Name = "boaz"
+        Owner = "Nati"
+        Department = "DevOps"
+        Temp = "True"
+      }
     }
   }
 }
