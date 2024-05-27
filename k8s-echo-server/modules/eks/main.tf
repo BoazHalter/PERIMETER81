@@ -46,10 +46,18 @@ tags = {
   enable_dns_hostnames = true
 
   public_subnet_tags = {
+    Name = "boaz"
+    Owner = "Nati"
+    Department = "DevOps"
+    Temp = "True"
     "kubernetes.io/role/elb" = 1
   }
 
   private_subnet_tags = {
+    Name = "boaz"
+    Owner = "Nati"
+    Department = "DevOps"
+    Temp = "True"
     "kubernetes.io/role/internal-elb" = 1
   }
 }
@@ -67,6 +75,12 @@ module "eks" {
   cluster_addons = {
     aws-ebs-csi-driver = {
       service_account_role_arn = module.irsa-ebs-csi.iam_role_arn
+      tags = {
+        Name = "boaz"
+        Owner = "Nati"
+        Department = "DevOps"
+        Temp = "True"
+      }
     }
   }
   tags = {
