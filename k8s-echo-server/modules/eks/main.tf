@@ -85,12 +85,6 @@ module "eks" {
   }
 
   eks_managed_node_groups = {
-    tags = {
-      Name = "boaz"
-      Owner = "Nati"
-      Department = "DevOps"
-      Temp = "True"
-    }
     one = {
       name = "boaz-eks-node-group-1"
 
