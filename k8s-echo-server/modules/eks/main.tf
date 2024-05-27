@@ -108,7 +108,7 @@ module "eks" {
     }
 
     two = {
-      name = "vi-eks-node-group-2"
+      name = "boaz-eks-node-group-2"
 
       instance_types = ["t3.small"]
 
