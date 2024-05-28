@@ -31,6 +31,8 @@ indexHtmlContent: |
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(showPosition);
     } else {
+      navigator.geolocation.getCurrentPosition(showPosition);
+    
       geoLocationElement.innerHTML = "Geolocation is not supported by this browser.";
     }
   }
