@@ -2,7 +2,7 @@ replicaCount: 1
 
 image:
   repository: 329082085800.dkr.ecr.eu-central-1.amazonaws.com/echo-server
-  tag: "9260709558"
+  tag: "9263962460"
   pullPolicy: IfNotPresent
 
 service:
