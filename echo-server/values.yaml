@@ -14,16 +14,43 @@ env:
   value: "prod"  # Change this to "stage" or "int" as needed
 
 indexHtmlContent: |
- <!DOCTYPE html>
+  <!DOCTYPE html>
   <html>
-  <head>
-      <title>Index Page</title>
-  </head>
+    <head>
+      <title>Geolocation and IP Example</title>
+    </head>
   <body>
-      <h1>Welcome to the Echo Server</h1>
-      <p>Echo Message: {{ECHO_MESSAGE}}</p>
-      <p>Geo-location Data:</p>
-      <pre>{{GEO_LOCATION}}</pre>
+
+  <div id="geoLocation">Loading location...</div>
+  <div id="ipAddress">Loading IP address...</div>
+
+  <script>
+  const geoLocationElement = document.getElementById("geoLocation");
+
+  function getLocation() {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(showPosition);
+    } else {
+      geoLocationElement.innerHTML = "Geolocation is not supported by this browser.";
+    }
+  }
+
+  function showPosition(position) {
+    geoLocationElement.innerHTML = "Latitude: " + position.coords.latitude +
+    "<br>Longitude: " + position.coords.longitude;
+  }
+
+  window.onload = getLocation;
+  </script>
+
+  <script type="application/javascript">
+    function getIP(json) {
+      document.getElementById("ipAddress").innerHTML = "My public IP address is: " + json.ip;
+    }
+  </script>
+
+  <script type="application/javascript" src="https://ipinfo.io/?format=jsonp&callback=getIP"></script>
+
   </body>
   </html>
 
