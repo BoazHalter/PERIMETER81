@@ -22,7 +22,6 @@ jobs:
     - name: Build the Docker image
       uses: actions/checkout@v4
     - run: |
-        cd service2
         docker build . --file Dockerfile --tag 329082085800.dkr.ecr.eu-central-1.amazonaws.com/echo-server:${{ github.run_id }}
         docker run -d -p 8080:8080 -e ECHO_MESSAGE="Hello from Staging" -e ENVIRONMENT=staging 329082085800.dkr.ecr.eu-central-1.amazonaws.com/echo-server:${{ github.run_id }}
         docker ps -a
@@ -34,9 +33,6 @@ jobs:
       run: |
         aws eks list-clusters
         aws eks update-kubeconfig  --name boaz-eks-VDpZSLdu
-        pwd
-        ls
-        cd service2
         kubectl delete cm index-html
         kubectl create configmap index-html --from-file=./index.html  -o yaml | kubectl apply -f -
       
