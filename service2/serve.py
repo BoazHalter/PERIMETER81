@@ -10,7 +10,7 @@ class MyHandler(http.server.SimpleHTTPRequestHandler):
         super().__init__(*args, directory=DIRECTORY, **kwargs)
 
     def do_GET(self):
-        if self.path == "/index.html":
+        if self.path == "/" or self.path == "/index.html":
             self.send_response(200)
             self.send_header("Content-type", "text/html")
             self.end_headers()
@@ -24,8 +24,8 @@ class MyHandler(http.server.SimpleHTTPRequestHandler):
 
             # Inject the environment variable into the HTML content
             modified_html_content = html_content.replace(
-                '<div id="environment">Loading environment...</div>',
-                f'<div id="environment">Environment: {environment_value}</div>'
+                '</body>',
+                f'<div>Environment: {environment_value}</div></body>'
             )
 
             # Send the modified HTML content
