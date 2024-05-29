@@ -35,7 +35,11 @@ jobs:
         aws eks list-clusters
         aws eks update-kubeconfig  --name boaz-eks-VDpZSLdu
         kubectl create configmap index-html --from-file=../service1/index.html --dry-run=client -o yaml | kubectl apply -f -
-
+      env:
+        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        AWS_DEFAULT_REGION: 'eu-central-1'
+    
     - name: Deploy echo-server
       run: |
         helm install --update echo-server --set image.tag=:${{ github.run_id }} ./echo-server
