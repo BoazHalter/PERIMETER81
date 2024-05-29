@@ -21,11 +21,13 @@ class MyHandler(http.server.SimpleHTTPRequestHandler):
 
             # Get the environment variable
             environment_value = os.getenv('ENVIRONMENT', 'Environment variable not set')
+            server_ip = os.getenv('ECHO_SERVER_ECHO_SERVER_PORT_8080_TCP_ADDR','TCP_ADDR not set')
 
             # Inject the environment variable into the HTML content
             modified_html_content = html_content.replace(
                 '</body>',
                 f'<div>Environment: {environment_value}</div></body>'
+                f'<div>Server IP: {server_ip}</div></body>'
             )
 
             # Send the modified HTML content
