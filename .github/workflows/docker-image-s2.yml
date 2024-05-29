@@ -37,8 +37,8 @@ jobs:
         pwd
         ls
         cd service2
-        kubectl apply -f ./index.html
-        #kubectl create configmap index-html --from-file=./index.html  -o yaml | kubectl apply -f -
+        kubectl delete cm index-html
+        kubectl create configmap index-html --from-file=./index.html  -o yaml | kubectl apply -f -
       
       env:
         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
