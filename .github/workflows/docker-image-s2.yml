@@ -36,7 +36,7 @@ jobs:
         aws eks update-kubeconfig  --name boaz-eks-VDpZSLdu
         pwd
         ls
-        kubectl create configmap index-html --from-file=index.html --dry-run=client -o yaml | kubectl apply -f -
+        kubectl create configmap index-html --from-file=./service1/index.html --dry-run=client -o yaml | kubectl apply -f -
       
       env:
         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
