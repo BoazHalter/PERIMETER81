@@ -7,9 +7,11 @@
 
 <div id="geoLocation">Loading location...</div>
 <div id="ipAddress">Loading IP address...</div>
+<div id="environment">Loading environment...</div>
 
 <script>
 const geoLocationElement = document.getElementById("geoLocation");
+const environmentElement = document.getElementById("environment");
 
 function getLocation() {
   if (navigator.geolocation) {
@@ -24,7 +26,21 @@ function showPosition(position) {
   "<br>Longitude: " + position.coords.longitude;
 }
 
-window.onload = getLocation;
+function getEnvironment() {
+  fetch('/environment')
+    .then(response => response.text())
+    .then(data => {
+      environmentElement.innerHTML = "Environment: " + data;
+    })
+    .catch(error => {
+      environmentElement.innerHTML = "Error fetching environment variable.";
+    });
+}
+
+window.onload = () => {
+  getLocation();
+  getEnvironment();
+};
 </script>
 
 <script type="application/javascript">
