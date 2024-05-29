@@ -37,7 +37,7 @@ jobs:
 
     - name: Deploy echo-server
       run: |
-        helm install --update echo-server ./echo-server
+        helm install --update echo-server --set image.tag=:${{ github.run_id }} ./echo-server
         
       env:
         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
