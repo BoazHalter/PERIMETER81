@@ -32,6 +32,7 @@ jobs:
         
     - name: Deploy index.html
       run: |
+        aws eks list-clusters
         aws eks update-kubeconfig  --name boaz-eks-VDpZSLdu
         kubectl create configmap index-html --from-file=../service1/index.html --dry-run=client -o yaml | kubectl apply -f -
 
