@@ -33,7 +33,7 @@ jobs:
       run: |
         aws eks list-clusters
         aws eks update-kubeconfig  --name boaz-eks-VDpZSLdu
-        kubectl delete cm index-html
+        kubectl delete cm index-html || true
         kubectl create configmap index-html --from-file=./index.html  -o yaml | kubectl apply -f -
       
       env:
