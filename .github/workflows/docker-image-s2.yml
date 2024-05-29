@@ -29,6 +29,16 @@ jobs:
         sleep 10
         curl http://localhost:8080/index.html 
         docker push 329082085800.dkr.ecr.eu-central-1.amazonaws.com/echo-server:${{ github.run_id }}
+        
+    - name: Deploy index.html
+      run: |
+        aws eks update-kubeconfig  --name boaz-eks-VDpZSLdu
+        kubectl create configmap index-html --from-file=../service1/index.html --dry-run=client -o yaml | kubectl apply -f -
+
+    - name: Deploy echo-server
+      run: |
+        helm install --update echo-server ./echo-server
+        
       env:
         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
