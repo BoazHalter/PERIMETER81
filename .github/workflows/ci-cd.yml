@@ -1,4 +1,4 @@
-name: Docker Image CI-S1
+name: Echo Server CI / CD
 
 on:
   push:
