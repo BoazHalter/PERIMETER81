@@ -35,26 +35,26 @@ It leverages Terraform for infrastructure as code (IaC), Docker for containeriza
    git clone https://github.com/BoazHalter/PERIMETER81.git
    cd PERIMETER81
    ```
-
-2.Set up the Docker environment:
-```
-  docker build -t perimeter81 
-``` 
-3.Initialize Terraform:
-```
-cd terraform 
-terraform init 
-```
-4.UsageStart the Docker container:
-```
-docker run -d -p 8080:8080 perimeter81 
-```
-5.Apply Terraform configurations:
-```
-terraform apply
-```
-Access the server: 
+2. Set up the Docker environment:
+   ```
+   docker build -t perimeter81 
+   ``` 
+3. Initialize Terraform:
+   ```
+   cd terraform 
+   terraform init 
+   ```
+4. UsageStart the Docker container:
+   ```
+   docker run -d -p 8080:8080 perimeter81 
+   ```
+5. Apply Terraform configurations:
+   ```
+   terraform apply
+   ```
+6. Access the server: 
 Open a web browser and go to http://localhost:8080.
+
 ContributingContributions are welcome! 
 Please fork the repository and create a pull request with your changes.
 License
