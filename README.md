@@ -20,13 +20,15 @@ It leverages Terraform for infrastructure as code (IaC), Docker for containeriza
 - **Infrastructure as Code (IaC):** Manage infrastructure using Terraform.
 - **Containerization:** Utilize Docker for deploying applications in isolated environments.
 - **Python Server:** A Python-based server to handle requests and manage network operations.
-
+- **HTML:** A index.html to deliver a web page content.
+- **Helm:** A helm chart for deploying Kubernetes applications.
 ## Getting Started
 
 ### Prerequisites
 - Docker
 - Terraform
 - Python 3.x
+- Helm
 
 ### Installation
 1. Clone the repository:
