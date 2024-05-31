@@ -27,7 +27,7 @@ It leverages Terraform for infrastructure as code (IaC), Docker for containeriza
 ### Prerequisites
 - Docker
 - Terraform
-- Python 3.x
+- Python
 - Helm
 
 ### Installation
