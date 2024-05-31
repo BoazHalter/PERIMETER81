@@ -31,4 +31,13 @@ PERIMETER81 is designed to help manage and secure network infrastructure effecti
 1. Clone the repository:
    ```bash
    git clone https://github.com/BoazHalter/PERIMETER81.git
-   cd PERIMETER81
+   cd PERIMETER81```
+
+1.Set up the Docker environment:
+```docker build -t perimeter81 ``` 
+2.Initialize Terraform:
+```cd terraform 
+terraform init ```
+3.UsageStart the Docker container:
+```docker run -d -p 8080:8080 perimeter81
+Apply Terraform configurations:terraform applyAccess the server: Open a web browser and go to http://localhost:8080.ContributingContributions are welcome! Please fork the repository and create a pull request with your changes.LicenseThis project is licensed under the MIT License. See the LICENSE file for details.Feel free to modify this template based on additional specific details about your project.
