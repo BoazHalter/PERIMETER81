@@ -57,10 +57,9 @@ It leverages Terraform for infrastructure as code (IaC), Docker for containeriza
 6. Access the server: 
 Open a web browser and go to http://localhost:8080.
 
-ContributingContributions are welcome! 
+ContributingContributions are welcome!.
 Please fork the repository and create a pull request with your changes.
-License
-This project is licensed under the MIT License. 
+License This project is licensed under the MIT License. 
 See the LICENSE file for details.
 Feel free to modify this template based on additional specific details about your project.
 incognito.
