@@ -1,0 +1,34 @@
+# PERIMETER81
+
+This repository contains a project focused on network security and infrastructure management, utilizing technologies such as Terraform, Docker, and Python.
+
+## Table of Contents
+- [About](#about)
+- [Features](#features)
+- [Getting Started](#getting-started)
+  - [Prerequisites](#prerequisites)
+  - [Installation](#installation)
+- [Usage](#usage)
+- [Contributing](#contributing)
+- [License](#license)
+
+## About
+PERIMETER81 is designed to help manage and secure network infrastructure effectively. It leverages Terraform for infrastructure as code (IaC), Docker for containerization, and Python for server-side scripting.
+
+## Features
+- **Infrastructure as Code (IaC):** Manage infrastructure using Terraform.
+- **Containerization:** Utilize Docker for deploying applications in isolated environments.
+- **Python Server:** A Python-based server to handle requests and manage network operations.
+
+## Getting Started
+
+### Prerequisites
+- Docker
+- Terraform
+- Python 3.x
+
+### Installation
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/BoazHalter/PERIMETER81.git
+   cd PERIMETER81
