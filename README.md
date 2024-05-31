@@ -73,7 +73,7 @@ update: <br>
 relaunch chrome chrome may generate a message regarding the use of unsupported flag<br>
 
 
-http://a022f0fe0d6da4233a50d03ae09d8bd5-1555814403.eu-central-1.elb.amazonaws.com:8080/index.html
+http://a022f0fe0d6da4233a50d03ae09d8bd5-1555814403.eu-central-1.elb.amazonaws.com:8080/index.html <br>
 chrome://flags/#unsafely-treat-insecure-origin-as-secure
 
 <img width="707" alt="image" src="https://github.com/BoazHalter/PERIMETER81/assets/30419068/b7ab42b0-8130-47d1-a239-44642a64ca30">
