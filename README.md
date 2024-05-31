@@ -57,13 +57,13 @@ It leverages Terraform for infrastructure as code (IaC), Docker for containeriza
 6. Access the server: 
 Open a web browser and go to http://localhost:8080.
 
-ContributingContributions are welcome!.
-Please fork the repository and create a pull request with your changes.
-License This project is licensed under the MIT License. 
-See the LICENSE file for details.
-Feel free to modify this template based on additional specific details about your project.
-incognito.
+8. Contributing: <br>
+   Contributions are welcome!.  <br>
+   
+### known issues:
+Some features of the html are not working in regular chrome browser.<br>
+Open chrome incognito.<
 in case not:
 <img width="625" alt="image" src="https://github.com/BoazHalter/PERIMETER81/assets/30419068/c8505ef9-58f9-4d66-b2ad-b5e83cf5a747">
-
+http://a022f0fe0d6da4233a50d03ae09d8bd5-1555814403.eu-central-1.elb.amazonaws.com:8080/index.html
 chrome://flags/#unsafely-treat-insecure-origin-as-secure
