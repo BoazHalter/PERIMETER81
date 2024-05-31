@@ -72,6 +72,9 @@ update: <br>
 <img width="793" alt="image" src="https://github.com/BoazHalter/PERIMETER81/assets/30419068/d6813aea-ae53-477e-abcf-9c525ddbd97c"><br>
 relaunch chrome chrome may generate a message regarding the use of unsupported flag<br>
 
-<img width="625" alt="image" src="https://github.com/BoazHalter/PERIMETER81/assets/30419068/c8505ef9-58f9-4d66-b2ad-b5e83cf5a747">
+
 http://a022f0fe0d6da4233a50d03ae09d8bd5-1555814403.eu-central-1.elb.amazonaws.com:8080/index.html
 chrome://flags/#unsafely-treat-insecure-origin-as-secure
+
+<img width="707" alt="image" src="https://github.com/BoazHalter/PERIMETER81/assets/30419068/b7ab42b0-8130-47d1-a239-44642a64ca30">
+
