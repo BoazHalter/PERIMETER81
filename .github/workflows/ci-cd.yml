@@ -19,19 +19,18 @@ jobs:
         registry: 329082085800.dkr.ecr.eu-central-1.amazonaws.com
         username: ${{ secrets.AWS_ACCESS_KEY_ID }}
         password: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+    
     - name: Build the Docker image
       uses: actions/checkout@v4
     - run: |
         docker build . --file Dockerfile --tag 329082085800.dkr.ecr.eu-central-1.amazonaws.com/echo-server:${{ github.run_id }}
         docker run -d -p 8080:8080 -e ECHO_MESSAGE="Hello from Staging" -e ENVIRONMENT=staging 329082085800.dkr.ecr.eu-central-1.amazonaws.com/echo-server:${{ github.run_id }}
-        docker ps -a
         sleep 10
         curl http://localhost:8080/index.html 
         docker push 329082085800.dkr.ecr.eu-central-1.amazonaws.com/echo-server:${{ github.run_id }}
         
     - name: Deploy index.html
       run: |
-        aws eks list-clusters
         aws eks update-kubeconfig  --name boaz-eks-VDpZSLdu
         kubectl delete cm index-html || true
         kubectl create configmap index-html --from-file=./index.html  -o yaml | kubectl apply -f -
