@@ -73,7 +73,9 @@ It leverages Terraform for infrastructure as code (IaC), Docker for containeriza
    helm upgrade echo-server --install --set env.value="stagging" --set image.tag=${{ github.run_id }} ./echo-server
    ```
 ### known issues:
-Some features of the html are not working in regular chrome browser.<br>
+1. helm chart deployment is not part of the terraform installation.
+
+2. Some features of the html are not working in regular chrome browser.<br>
 Open chrome incognito.<br>
 Browse to:<br>
 ```chrome://flags/#unsafely-treat-insecure-origin-as-secure```<br>
