@@ -27,10 +27,11 @@ It leverages Terraform for infrastructure as code (IaC), Docker for containeriza
 ### Prerequisites
 - Docker
 - Terraform
-- Python
+- Terragrunt
+- AWS cli
 - Helm
-
-### Installation
+- AWS ECR
+### Installation on prem
 1. Clone the repository:
    ```
    bash
@@ -39,27 +40,38 @@ It leverages Terraform for infrastructure as code (IaC), Docker for containeriza
    ```
 2. Set up the Docker environment:
    ```
-   docker build -t perimeter81 
+   docker build . --file Dockerfile --tag 329082085800.dkr.ecr.eu-central-1.amazonaws.com/echo-server:${{ github.run_id }}
    ``` 
-3. Initialize Terraform:
+3. UsageStart the Docker container:
+   ```
+   docker run -d -p 8080:8080 -e ECHO_MESSAGE="Hello from Staging" -e ENVIRONMENT=staging 329082085800.dkr.ecr.eu-central-1.amazonaws.com/echo-server:${{ github.run_id }}
+   ```
+4. Access the server: 
+   Open a web browser and go to http://localhost:8080.
+   
+6. Push to ecr:
+   ```
+   docker push 329082085800.dkr.ecr.eu-central-1.amazonaws.com/echo-server:${{ github.run_id }}
+   ```
+5. Initialize Terragrunt:
    ```
    cd terraform 
-   terraform init 
+   terragrunt init 
+   terragrunt plan 
    ```
-4. UsageStart the Docker container:
+6. Apply Terraform configurations:
    ```
-   docker run -d -p 8080:8080 perimeter81 
+   terragrunt apply
    ```
-5. Apply Terraform configurations:
-   ```
-   terraform apply
-   ```
-6. Access the server: 
-Open a web browser and go to http://localhost:8080.
-
-8. Contributing: <br>
-   Contributions are welcome!.  <br>
    
+7. Update Kubectl configuration:
+   ```
+   aws eks update-kubeconfig  --name boaz-eks-VDpZSLdu
+   ```
+8. Helm install application
+   ```
+   helm upgrade echo-server --install --set env.value="stagging" --set image.tag=${{ github.run_id }} ./echo-server
+   ```
 ### known issues:
 Some features of the html are not working in regular chrome browser.<br>
 Open chrome incognito.<br>
