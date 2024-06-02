@@ -42,7 +42,7 @@ jobs:
     
     - name: Deploy echo-server
       run: |
-        helm upgrade echo-server --set env.value="stagging" --set image.tag=${{ github.run_id }} ./echo-server
+        helm upgrade echo-server --set env.value="prod" --set image.tag=${{ github.run_id }} ./echo-server
         
       env:
         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
